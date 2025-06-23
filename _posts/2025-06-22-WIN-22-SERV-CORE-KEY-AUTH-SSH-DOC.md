@@ -2,10 +2,10 @@
 
 It can be very easy to set up the ssh service on one of your servers and then connect to it using the command -
 
-`ssh username@10.10.10.1
-#change example username and IP address to match real username and IP
-#then enter "yes" to accept the fingerprint of the host your are connecting to
-#IF you trust this host. And then finally input your password`
+    `ssh username@10.10.10.1
+    #change example username and IP address to match real username and IP
+    #then enter "yes" to accept the fingerprint of the host your are connecting to
+    #IF you trust this host. And then finally input your password`
 
 This CAN work well, especially if you are on trusted network. BUT you probably want to opt for a more secure authentication method if you are connecting to a server over an untrustworthy network such as the public internet or perhaps a large corporate network.
 
