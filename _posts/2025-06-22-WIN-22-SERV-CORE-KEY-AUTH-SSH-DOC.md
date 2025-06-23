@@ -2,10 +2,10 @@
 
 It can be very easy to set up the ssh service on one of your servers and then connect to it using the command -
 
-    `ssh username@10.10.10.1
+    ssh username@10.10.10.1
     #change example username and IP address to match real username and IP
     #then enter "yes" to accept the fingerprint of the host your are connecting to
-    #IF you trust this host. And then finally input your password`
+    #IF you trust this host. And then finally input your password
 
 This CAN work well, especially if you are on trusted network. BUT you probably want to opt for a more secure authentication method if you are connecting to a server over an untrustworthy network such as the public internet or perhaps a large corporate network.
 
@@ -26,7 +26,7 @@ From here their two optional practices you can implement to further harden your 
 
 - Open a Powershell terminal as an Administrator
 - Run this cmdlet to install the OpenSSH Client-
-	- `Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
+	- ```Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0```
 - The command should return-
 	![[Pasted image 20250622180545.png]]
 
