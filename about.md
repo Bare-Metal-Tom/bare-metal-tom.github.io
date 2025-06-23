@@ -2,6 +2,7 @@
 layout: default
 title: About
 permalink: /about/
+{% include nav.html %}
 ---
 
 Hello! I have been enamored with computers ever since I took my first Python programming class at Cape Fear Community College. 
