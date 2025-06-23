@@ -35,21 +35,21 @@ From here their two optional practices you can implement to further harden your 
 
 - Open a Powershell terminal as an Administrator
 - Run this cmdlet to install the OpenSSH Client-
-	- `Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
+	- ```Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0```
 - The command should return-
 	![[Pasted image 20250622180545.png]]
 - Run this cmdlet to start the sshd service and then make this service automatically start anytime the server machine boots 
-	- `Start-Service sshd
-	- `Set-Service -Name sshd -StartupType 'Automatic'
+	- ```Start-Service sshd```
+	- ```Set-Service -Name sshd -StartupType 'Automatic'```
 - Configure the default shell for OpenSSH so that you can use Powershell cmdlets when you connect from client machine
-	- `New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -PropertyType String -Force
+	- ```New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -PropertyType String -Force```
 
 ### STOP! --- If Having SSH With Basic Password Auth Is Your Goal, You Can Stop Here. For Public Key Auth, Continue
 
 ## STEP 3 --- Generate Your Client Keys On Client Computer
 
 - Run this cmdlet to generate key files (ECDSA or ED25519 are recommended)
-	- `ssh-keygen -t ecdsa
+	- ```ssh-keygen -t ecdsa```
 	- You will be prompted to select a file path for the key files (I leave this default)
 	- Next you will prompted to create a passphrase for the key files
 	- When the process completes you will see something called a Randomart Image
@@ -63,35 +63,35 @@ From here their two optional practices you can implement to further harden your 
 - Open the pub key file with notepad
 - Copy all of the text, make sure there are no trailing whitespaces
 - SSH into the server and execute the following cmdlets:
-	- `"<pasted_public_key_file_contents>" | Out-File -FilePath "C:\example.txt"
+	- ```"<pasted_public_key_file_contents>" | Out-File -FilePath "C:\example.txt"```
 	- This will create the file on the server if it doesn't exist
 	- CAUTION- Will completely overwrite the file if it does already exist
-	- Use the `-Append` flag to add to the file without overwriting
+	- Use the ```-Append``` flag to add to the file without overwriting
 
 ## STEP 5 --- Append Client Public Key To the Authorized Keys File On the Server
 
-- `Get-Content "<public_key_absolute_path>" | Add-Content "$env:ProgramData\ssh\administrators_authorized_keys"
+- ```Get-Content "<public_key_absolute_path>" | Add-Content "$env:ProgramData\ssh\administrators_authorized_keys"```
 - Create the file administrators_authorized_keys if it doesn't exist (no file extension)
 
 ## STEP 6 --- Apply the Correct ACLs to the Authorized Key File Using One of the Server's Private Key Files
 
-- `get-acl "$env:programdata\ssh\ssh_host_ecdsa_key" | set-acl "$env:programdata\ssh\administrators_authorized_keys"
+- ```get-acl "$env:programdata\ssh\ssh_host_ecdsa_key" | set-acl "$env:programdata\ssh\administrators_authorized_keys"```
 
 ## STEP 7 --- Try Out the Key-based Auth From Your Client Machine
 
-- `ssh username@<server_ip_address>
+- ```ssh username@<server_ip_address>```
 - If the steps above were completed properly, you will not be prompted for a password. You will either connect automatically (if you didn't set a passphrase) OR you will be prompted for the passphrase you created, like this:
-	- `Enter passphrase for key 'C:\Users\Username\.ssh\id_ecdsa':
+	- ```Enter passphrase for key 'C:\Users\Username\.ssh\id_ecdsa':```
 
 ## STEP 8 (OPTIONAL) --- Disable Password Auth
 
-- Navigate into this folder -  `"C:\ProgramData\ssh\"
-- Read and Modify this file- `sshd_config
+- Navigate into this folder -  ```"C:\ProgramData\ssh\"```
+- Read and Modify this file- ```sshd_config```
 - Ensure that these two lines are present in the config and not committed out-
-	- `PasswordAuthentication no
-	- `PubkeyAuthentication yes
+	- ```PasswordAuthentication no```
+	- ```PubkeyAuthentication yes```
 - Recommended- make a backup file prior to modification-
-	- `Copy-Item C:\ProgramData\ssh\sshd_config C:\ProgramData\ssh\sshd_config.bak
+	- ```Copy-Item C:\ProgramData\ssh\sshd_config C:\ProgramData\ssh\sshd_config.bak```
 - After the config has been changed, restart the sshd service-
-	- `Restart-Service sshd
+	- ```Restart-Service sshd```
 - CAUTION- Only do this if you confirmed that public key encryption is working first
