@@ -2,6 +2,9 @@
 # This file contains configuration flags to customize your site
 #
 
+#Site Theme
+theme: jekyll-theme-hacker
+
 # Name of your site (displayed in the header)
 name: Thomas Barnett
 
