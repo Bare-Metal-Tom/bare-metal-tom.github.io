@@ -17,5 +17,3 @@ reinforce the skills I've learned.
 ### Contact me
 
 [tombarn65@gmail.com](mailto:tombarn65@gmail.com)
-
-{% include nav.html %}
