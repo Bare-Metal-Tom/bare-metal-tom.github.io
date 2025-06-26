@@ -2,6 +2,8 @@
 layout: default
 ---
 
+# WINDOWS SERVER 2022 CORE
+
 ## The Problem with Passwords-
 
 It can be very easy to set up the ssh service on one of your servers and then connect to it using the command -
