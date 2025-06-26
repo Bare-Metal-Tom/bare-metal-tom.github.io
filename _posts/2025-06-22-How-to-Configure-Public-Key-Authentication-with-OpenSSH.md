@@ -5,6 +5,7 @@ title: How to Configure Public Key Authentication with OpenSSH
 
 # Windows 11 and Windows Server 2022 Core
 
+----------------------------------------
 
 ## The Problem with Passwords-
 
