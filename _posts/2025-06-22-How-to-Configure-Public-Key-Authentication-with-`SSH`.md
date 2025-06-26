@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# WINDOWS SERVER 2022 CORE
+# WINDOWS 11 AND WINDOWS SERVER 2022 CORE
 
 ## The Problem with Passwords-
 
