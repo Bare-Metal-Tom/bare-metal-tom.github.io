@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 {% seo %}
 <style>
@@ -369,6 +370,22 @@
       padding-left: 10px;
       align-self: center;
     }
+
+    .footer-icons {
+      text-align: center;
+      margin: 20px 0;
+    }
+  
+    .footer-icons a i {
+      font-size: 24px;
+      color: #00FF00;  /* hacker green */
+      margin: 0 10px;
+    }
+  
+    .footer-icons a i:hover {
+      color: #80ff80;
+    }
+
   </style>
 
     <!--link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}"-->
@@ -413,7 +430,20 @@
 
         {{ content }}
 
-      </section> 
+      </section>
+      <section>
+  ...
+</section>
+
+<div class="footer-icons" style="text-align: center; margin: 20px 0;">
+  <a href="https://www.linkedin.com/in/thomas-barnett-694b22236" target="_blank" aria-label="LinkedIn">
+    <i class="fab fa-linkedin"></i>
+  </a>
+  <a href="mailto:tombarn65@gmail.com" aria-label="Email">
+    <i class="fas fa-envelope"></i>
+  </a>
+</div>
+
       
     </div>
   </body>
