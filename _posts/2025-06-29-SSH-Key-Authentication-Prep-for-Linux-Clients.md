@@ -1,3 +1,5 @@
+## Steps for Generating and Viewing Keys
+
 `ssh-keygen -t ecdsa -C "<Insert Your Label Here>"
 
 `-t ecdsa` - this sets the encryption algorithm
