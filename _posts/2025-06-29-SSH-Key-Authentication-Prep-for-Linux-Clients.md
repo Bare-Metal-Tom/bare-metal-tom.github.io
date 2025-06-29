@@ -5,7 +5,7 @@ title: SSH Key Authentication Prep for Linux Clients
 
 # Steps for Generating and Viewing Keys
 
-`ssh-keygen -t ecdsa -C "<Insert Your Label Here>"
+`ssh-keygen -t ecdsa -C "<Insert Your Label Here>"`
 
 `-t ecdsa` - this sets the encryption algorithm
 `-C "<Insert Your Label Here>"` - This is just to add a label to your key
