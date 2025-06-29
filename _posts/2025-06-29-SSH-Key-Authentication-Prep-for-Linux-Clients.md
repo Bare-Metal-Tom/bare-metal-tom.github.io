@@ -1,4 +1,9 @@
-## Steps for Generating and Viewing Keys
+---
+layout: default
+Title: SSH Key Authentication Prep for Linux Clients
+---
+
+# Steps for Generating and Viewing Keys
 
 `ssh-keygen -t ecdsa -C "<Insert Your Label Here>"
 
