@@ -1,6 +1,6 @@
 ---
 layout: default
-Title: SSH Key Authentication Prep for Linux Clients
+title: SSH Key Authentication Prep for Linux Clients
 ---
 
 # Steps for Generating and Viewing Keys
